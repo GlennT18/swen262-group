@@ -8,10 +8,10 @@ public class Release {
     private final String title;
     private final Artist artist;
     private final Date issueDate;
-    private final Medium medium;
+    private final String medium;
     private final List<Song> trackList;
 
-    public Release(String guid, String title, Artist artist, Date issueDate, Medium medium, List<Song> trackList) {
+    public Release(String guid, String title, Artist artist, Date issueDate, String medium, List<Song> trackList) {
         this.guid = guid;
         this.title = title;
         this.artist = artist;
