@@ -11,6 +11,18 @@ public class Artist {
         this.type = type;
     }
 
+    public String getGuid() {
+        return guid;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getType() {
+        return type;
+    }
+
     @Override
     public String toString() {
         return "Artist{" +

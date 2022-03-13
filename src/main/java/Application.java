@@ -1,12 +1,10 @@
-import com.opencsv.exceptions.CsvValidationException;
+import model.AllMusic;
 import model.Database;
 
-import java.io.IOException;
-
 public class Application {
-    public static void main(String[] args) throws CsvValidationException, IOException {
+    public static void main(String[] args) {
         // Initial Setup of Database
-        Database database = new Database();
+        Database database = new AllMusic();
         database.initialize();
     }
 }
