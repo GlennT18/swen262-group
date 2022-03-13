@@ -1,5 +1,5 @@
-import model.AllMusic;
-import model.Database;
+import model.database.AllMusic;
+import model.database.Database;
 
 public class Application {
     public static void main(String[] args) {
