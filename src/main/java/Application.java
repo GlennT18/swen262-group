@@ -1,8 +1,5 @@
 import controller.QueryManager;
-import controller.search.ArtistMinRatingSearch;
-import controller.search.ArtistNameSearch;
-import controller.search.ArtistTypeSearch;
-import controller.search.Searcher;
+import controller.search.*;
 import model.Release;
 import model.Song;
 import model.database.AllMusic;
@@ -63,6 +60,20 @@ public class Application {
 //        queryManager.setSearcher(artistMinRatingSearch);
 //        queryManager.setArgument("2");
 //        printList(queryManager.executeQuery());
+
+        // Test ArtistNameSearch
+//        Searcher songTitleSearch = new SongTitleSearch();
+//        queryManager.setDatabase(allMusic);
+//        queryManager.setSearcher(songTitleSearch);
+//        queryManager.setArgument("The");
+//        printList(queryManager.executeQuery());
+
+        // Test ArtistNameSearch
+        Searcher songArtistNameSearch = new SongArtistNameSearch();
+        queryManager.setDatabase(allMusic);
+        queryManager.setSearcher(songArtistNameSearch);
+        queryManager.setArgument("Weezer");
+        printList(queryManager.executeQuery());
 
 
 
