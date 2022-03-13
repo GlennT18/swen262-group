@@ -184,6 +184,21 @@ public class Application {
 //        queryManager.setArgument("0");
 //        printList(queryManager.executeQuery());
 
+        // Test ReleaseMinRatingSearch
+        // Add release and rate each song inside
+//        Release addedRelease = personalLibrary.addRelease(
+//                allMusic.getReleases().get("c4c90ef7-da52-48b4-8c3a-b30c1367e75e")
+//        );
+//        for (Song s: addedRelease.getTrackList()) {
+//            s.setRating(5);
+//        }
+//
+//        Searcher releaseMinRatingSearch = new ReleaseMinRatingSearch();
+//        queryManager.setDatabase(personalLibrary);
+//        queryManager.setSearcher(releaseMinRatingSearch);
+//        queryManager.setArgument("5");
+//        printList(queryManager.executeQuery());
+
 
 
 
