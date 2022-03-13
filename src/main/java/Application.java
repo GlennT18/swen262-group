@@ -82,10 +82,22 @@ public class Application {
 //        queryManager.setArgument("86e736b4-93e2-40ff-9e1c-fb7c63fef5f6");
 //        printList(queryManager.executeQuery());
 
+        // Test SongArtistNameSearch
+//        Searcher songArtistGuidSearch = new SongArtistGuidSearch();
+//        queryManager.setDatabase(allMusic);
+//        queryManager.setSearcher(songArtistGuidSearch);
+//        queryManager.setArgument("86e736b4-93e2-40ff-9e1c-fb7c63fef5f6");
+//        printList(queryManager.executeQuery());
 
+        // Test SongReleaseTitleSearch
+        Searcher songReleaseTitleSearch = new SongReleaseTitleSearch();
+        queryManager.setDatabase(allMusic);
+        queryManager.setSearcher(songReleaseTitleSearch);
+        queryManager.setArgument("Wheels");
+        printList(queryManager.executeQuery());
 
 
         // Save personalLibrary
-        personalLibrary.save();
+        //personalLibrary.save();
     }
 }
