@@ -71,17 +71,67 @@ public class PersonalMusicLibrary implements Database {
     }
 
     @Override
-    public void addArtist(Artist artist) {
-        artists.put(artist.getGuid(), artist);
+    public Artist addArtist(Artist artist) {
+        // Copy artist
+        Artist newArtist = new Artist(artist.getGuid(), artist.getName(), artist.getType());
+
+        // Put new artist object into this database
+        artists.put(newArtist.getGuid(), newArtist);
+        return newArtist;
     }
 
     @Override
-    public void addSong(Song song) {
-        songs.put(song.getGuid(), song);
+    public Song addSong(Song song) {
+        // Check if songs artist is in the personal library already
+        String artistGuid = song.getArtist().getGuid();
+        if (!artists.containsKey(artistGuid)) {
+            addArtist(song.getArtist());
+        }
+
+        // Get the artist object of the song to be added
+        Artist songArtist = artists.get(artistGuid);
+
+        // Copy song
+        Song newSong = new Song(song.getGuid(), songArtist, song.getDuration(), song.getTitle());
+
+        // Also add Song to artists song list
+        songArtist.addSong(newSong);
+
+        // Put new song into this database
+        songs.put(newSong.getGuid(), newSong);
+        return newSong;
     }
 
     @Override
-    public void addRelease(Release release) {
-        releases.put(release.getGuid(), release);
+    public Release addRelease(Release release) {
+        // Check if release artist is in the personal library already
+        String artistGuid = release.getArtist().getGuid();
+        if (!artists.containsKey(artistGuid)) {
+            addArtist(release.getArtist());
+        }
+
+        // Get the artist object of the song to be added
+        Artist releaseArtist = artists.get(artistGuid);
+
+        // Add all songs in the release
+        Song[] newTrackList = new Song[release.getTrackList().length];
+        int trackNum = 0;
+        for (Song s : release.getTrackList()) {
+            newTrackList[trackNum] = addSong(s);
+            trackNum++;
+        }
+
+        // Copy release
+        Release newRelease = new Release(
+                release.getGuid(),
+                release.getTitle(),
+                releaseArtist,
+                release.getIssueDate(),
+                release.getMedium(),
+                newTrackList);
+
+        // Put new release into this database
+        releases.put(newRelease.getGuid(), newRelease);
+        return newRelease;
     }
 }

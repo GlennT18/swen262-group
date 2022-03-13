@@ -12,7 +12,7 @@ public interface Database {
     HashMap<String, Artist> getArtists();
     HashMap<String, Song> getSongs();
     HashMap<String, Release> getReleases();
-    void addArtist(Artist artist);
-    void addSong(Song song);
-    void addRelease(Release release);
+    Artist addArtist(Artist artist);
+    Song addSong(Song song);
+    Release addRelease(Release release);
 }

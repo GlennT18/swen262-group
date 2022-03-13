@@ -55,18 +55,21 @@ public class AllMusic implements Database {
     }
 
     @Override
-    public void addArtist(Artist artist) {
+    public Artist addArtist(Artist artist) {
         artists.put(artist.getGuid(), artist);
+        return artist;
     }
 
     @Override
-    public void addSong(Song song) {
+    public Song addSong(Song song) {
         songs.put(song.getGuid(), song);
+        return song;
     }
 
     @Override
-    public void addRelease(Release release) {
+    public Release addRelease(Release release) {
         releases.put(release.getGuid(), release);
+        return release;
     }
 
     private void loadArtists() throws CsvValidationException, IOException {
@@ -103,6 +106,9 @@ public class AllMusic implements Database {
             // Make song object from row data and put in the hashmap
             Song currentSong = new Song(guid, songArtist, duration, title);
             addSong(currentSong);
+
+            // Also add Song to artists song list
+            songArtist.addSong(currentSong);
         }
         System.out.println("Done!");
     }
