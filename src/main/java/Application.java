@@ -170,6 +170,22 @@ public class Application {
 //        queryManager.setArgument("3f6a83bf-64c6-481f-9438-783e3d2bc9a6");
 //        printList(queryManager.executeQuery());
 
+        // Test ReleaseMinDurationSearch
+//        Searcher releaseMinDurationSearch = new ReleaseMinDurationSearch();
+//        queryManager.setDatabase(allMusic);
+//        queryManager.setSearcher(releaseMinDurationSearch);
+//        queryManager.setArgument("5000000");
+//        printList(queryManager.executeQuery());
+
+        // Test ReleaseMaxDurationSearch
+//        Searcher releaseMaxDurationSearch = new ReleaseMaxDurationSearch();
+//        queryManager.setDatabase(allMusic);
+//        queryManager.setSearcher(releaseMaxDurationSearch);
+//        queryManager.setArgument("0");
+//        printList(queryManager.executeQuery());
+
+
+
 
         // Save personalLibrary
         //personalLibrary.save();
