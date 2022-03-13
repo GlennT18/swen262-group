@@ -135,6 +135,13 @@ public class Application {
 //        queryManager.setArgument("2");
 //        printList(queryManager.executeQuery());
 
+        // Test ReleaseTitleSearch
+//        Searcher releaseTitleSearch = new ReleaseTitleSearch();
+//        queryManager.setDatabase(allMusic);
+//        queryManager.setSearcher(releaseTitleSearch);
+//        queryManager.setArgument("F");
+//        printList(queryManager.executeQuery());
+
 
         // Save personalLibrary
         //personalLibrary.save();
