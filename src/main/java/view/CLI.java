@@ -14,36 +14,36 @@ import controller.search.*;
 public class CLI {
     static Scanner scanner = new Scanner(System.in);
     //creating the hashmap for each search
-    HashMap<String, Searcher> artistSearches = new HashMap<String, Searcher>();
-    HashMap<String, Searcher> releaseSearches = new HashMap<String, Searcher>();
-    HashMap<String, Searcher> songSearches = new HashMap<String, Searcher>();
+    private HashMap<String, Searcher> artistSearches = new HashMap<String, Searcher>();
+    private HashMap<String, Searcher> releaseSearches = new HashMap<String, Searcher>();
+    private HashMap<String, Searcher> songSearches = new HashMap<String, Searcher>();
+
     public CLI(){
         //instantiate individual searches for artist
-        artistSearches.put("name", new ArtistNameSearch());
-        artistSearches.put("rating", new ArtistMinRatingSearch());
-        artistSearches.put("rating", new ArtistMinRatingSearch());
+        this.artistSearches.put("name", new ArtistNameSearch());
+        this.artistSearches.put("rating", new ArtistMinRatingSearch());
+        this.artistSearches.put("rating", new ArtistMinRatingSearch());
 
         //instantiate individual searches for releases
-        releaseSearches.put("artistcode", new ReleaseArtistGuidSearch());
-        releaseSearches.put("artistname", new ReleaseSongNameSearch());
-        releaseSearches.put("maxduration", new ReleaseMaxDurationSearch());
-        releaseSearches.put("minduration", new ReleaseMinDurationSearch());
-        releaseSearches.put("minrating", new ReleaseMinRatingSearch());
-        releaseSearches.put("songcode", new ReleaseSongGuidSearch());
-        releaseSearches.put("songname", new ReleaseSongNameSearch());
-        releaseSearches.put("title", new ReleaseTitleSearch());
+        this.releaseSearches.put("artistcode", new ReleaseArtistGuidSearch());
+        this.releaseSearches.put("artistname", new ReleaseSongNameSearch());
+        this.releaseSearches.put("maxduration", new ReleaseMaxDurationSearch());
+        this.releaseSearches.put("minduration", new ReleaseMinDurationSearch());
+        this.releaseSearches.put("minrating", new ReleaseMinRatingSearch());
+        this.releaseSearches.put("songcode", new ReleaseSongGuidSearch());
+        this.releaseSearches.put("songname", new ReleaseSongNameSearch());
+        this.releaseSearches.put("title", new ReleaseTitleSearch());
 
         //instantiate individual searches for songs
-        songSearches.put("artistcode", new SongArtistGuidSearch());
-        songSearches.put("artistname", new SongArtistNameSearch());
-        songSearches.put("maxduration", new SongMaxDurationSearch());
-        songSearches.put("minduration", new SongMinDurationSearch());
-        songSearches.put("minrating", new SongMinRatingSearch());
-        songSearches.put("releasecode", new SongReleaseGuidSearch());
-        songSearches.put("releasetitle", new SongReleaseTitleSearch());
-        songSearches.put("title", new SongTitleSearch());
+        this.songSearches.put("artistcode", new SongArtistGuidSearch());
+        this.songSearches.put("artistname", new SongArtistNameSearch());
+        this.songSearches.put("maxduration", new SongMaxDurationSearch());
+        this.songSearches.put("minduration", new SongMinDurationSearch());
+        this.songSearches.put("minrating", new SongMinRatingSearch());
+        this.songSearches.put("releasecode", new SongReleaseGuidSearch());
+        this.songSearches.put("releasetitle", new SongReleaseTitleSearch());
+        this.songSearches.put("title", new SongTitleSearch());
     }
-    
     
     private static List parseRequest(String request){
         //parses string into char array
@@ -74,6 +74,9 @@ public class CLI {
         return parsedList;
     }
     public static void main(String args[]){
+        //instantiates CLI, fills hashmaps with data
+        CLI cli = new CLI();
+
         //introduces user
         String request;
         List command = new ArrayList<>();
@@ -89,13 +92,18 @@ public class CLI {
             command = parseRequest(request);
         }
 
-        //checks length of arguements, and decids what search to use upon that information
-        int arguements = command.size();
-
         //bulk of cli
         //creating the db for music & query manager
         Database allMusic = new AllMusic();
         Database personalLibrary = new PersonalMusicLibrary();
         QueryManager queryManager = new QueryManager();
+
+        if(command.get(0) == "global"){
+            if(command.get(1) == ""){
+
+            }
+        }else{
+
+        }
     }
 }
