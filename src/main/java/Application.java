@@ -97,11 +97,18 @@ public class Application {
 //        printList(queryManager.executeQuery());
 
         // Test SongReleaseGuidSearch
-        Searcher songReleaseGuidSearch = new SongReleaseGuidSearch();
-        queryManager.setDatabase(allMusic);
-        queryManager.setSearcher(songReleaseGuidSearch);
-        queryManager.setArgument("930ef9f6-1f75-4fa0-8b53-db31066a42a8");
-        printList(queryManager.executeQuery());
+//        Searcher songReleaseGuidSearch = new SongReleaseGuidSearch();
+//        queryManager.setDatabase(allMusic);
+//        queryManager.setSearcher(songReleaseGuidSearch);
+//        queryManager.setArgument("930ef9f6-1f75-4fa0-8b53-db31066a42a8");
+//        printList(queryManager.executeQuery());
+
+        // Test SongReleaseGuidSearch
+//        Searcher songMinDurationSearch = new SongMinDurationSearch();
+//        queryManager.setDatabase(allMusic);
+//        queryManager.setSearcher(songMinDurationSearch);
+//        queryManager.setArgument("500000");
+//        printList(queryManager.executeQuery());
 
 
         // Save personalLibrary
