@@ -5,7 +5,6 @@ import com.opencsv.exceptions.CsvValidationException;
 import model.Artist;
 import model.Release;
 import model.Song;
-import model.database.Database;
 
 import java.io.FileReader;
 import java.io.IOException;
