@@ -17,8 +17,14 @@ public class ArtistMinRatingSearch implements Searcher{
             // AllMusic doesn't have rating so this search would not apply
             return null;
         }
+
         // Convert query to integer
-        int queryInt = Integer.parseInt(query);
+        int queryInt;
+        try {
+            queryInt = Integer.parseInt(query);
+        } catch (NumberFormatException e) {
+            return null;
+        }
 
         ArrayList<Artist> results = new ArrayList<>();
 
