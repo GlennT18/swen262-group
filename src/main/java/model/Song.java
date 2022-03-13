@@ -1,8 +1,9 @@
 package model;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
-public class Song {
+public class Song implements Serializable {
     private final String guid;
     private final Artist artist;
     private final int duration;

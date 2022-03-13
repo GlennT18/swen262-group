@@ -21,6 +21,10 @@ public class AllMusic implements Database {
     private final HashMap<String, Song> songs = new HashMap<>();         // GUID -> Song
     private final HashMap<String, Release> releases = new HashMap<>();   // GUID -> Release
 
+    public AllMusic() {
+        initialize();
+    }
+
     public void initialize() {
         try {
             loadArtists();  // Load artists first because the have no references

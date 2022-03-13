@@ -1,9 +1,10 @@
 package model;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.Arrays;
 
-public class Release {
+public class Release implements Serializable {
     private final String guid;
     private final String title;
     private final Artist artist;
