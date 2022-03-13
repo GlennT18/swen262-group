@@ -29,6 +29,14 @@ public class Artist implements Serializable {
         return type;
     }
 
+    public float getAverageRating() {
+        float totalRating = 0;
+        for (Song s : songs) {
+            totalRating += s.getRating();
+        }
+        return totalRating / songs.size();
+    }
+
     public void addSong(Song song) {
         songs.add(song);
     }

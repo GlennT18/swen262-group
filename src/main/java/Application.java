@@ -1,8 +1,10 @@
 import controller.QueryManager;
+import controller.search.ArtistMinRatingSearch;
 import controller.search.ArtistNameSearch;
 import controller.search.ArtistTypeSearch;
 import controller.search.Searcher;
 import model.Release;
+import model.Song;
 import model.database.AllMusic;
 import model.database.Database;
 import model.database.PersonalMusicLibrary;
@@ -11,11 +13,15 @@ import java.util.List;
 
 public class Application {
     public static void printList(List list) {
-        System.out.println("[");
-        for (Object o : list) {
-            System.out.println(o);
+        if (list != null) {
+            System.out.println("[");
+            for (Object o : list) {
+                System.out.println(o);
+            }
+            System.out.println("]");
+        } else {
+            System.out.println("List is null.");
         }
-        System.out.println("]");
     }
 
     public static void main(String[] args) {
@@ -38,6 +44,24 @@ public class Application {
 //        queryManager.setDatabase(allMusic);
 //        queryManager.setSearcher(artistTypeSearch);
 //        queryManager.setArgument("US");
+//        printList(queryManager.executeQuery());
+
+//        // Test ArtistTypeSearch
+//        // Add songs and rate them
+//        Song addedSong = personalLibrary.addSong(
+//                allMusic.getSongs().get("6e33056b-2a34-4ed0-b49c-f7a8ae2c5bcc")
+//        );
+//        addedSong.setRating(1);
+//
+//        Song addedSong2 = personalLibrary.addSong(
+//                allMusic.getSongs().get("dc2f8125-f42d-4498-b0f6-57dc18492caf")
+//        );
+//        addedSong2.setRating(5);
+//
+//        Searcher artistMinRatingSearch = new ArtistMinRatingSearch();
+//        queryManager.setDatabase(personalLibrary);
+//        queryManager.setSearcher(artistMinRatingSearch);
+//        queryManager.setArgument("2");
 //        printList(queryManager.executeQuery());
 
 
