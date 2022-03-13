@@ -16,7 +16,7 @@ public class SongArtistGuidSearch implements Searcher{
 
         HashMap<String, Song> songs = db.getSongs();
         for (Song song: songs.values()) {
-            if (song.getArtist().getGuid().contains(query)) {
+            if (song.getArtist().getGuid().equals(query)) {
                 results.add(song);
             }
         }
