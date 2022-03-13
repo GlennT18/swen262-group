@@ -90,10 +90,17 @@ public class Application {
 //        printList(queryManager.executeQuery());
 
         // Test SongReleaseTitleSearch
-        Searcher songReleaseTitleSearch = new SongReleaseTitleSearch();
+//        Searcher songReleaseTitleSearch = new SongReleaseTitleSearch();
+//        queryManager.setDatabase(allMusic);
+//        queryManager.setSearcher(songReleaseTitleSearch);
+//        queryManager.setArgument("Wheels");
+//        printList(queryManager.executeQuery());
+
+        // Test SongReleaseGuidSearch
+        Searcher songReleaseGuidSearch = new SongReleaseGuidSearch();
         queryManager.setDatabase(allMusic);
-        queryManager.setSearcher(songReleaseTitleSearch);
-        queryManager.setArgument("Wheels");
+        queryManager.setSearcher(songReleaseGuidSearch);
+        queryManager.setArgument("930ef9f6-1f75-4fa0-8b53-db31066a42a8");
         printList(queryManager.executeQuery());
 
 
