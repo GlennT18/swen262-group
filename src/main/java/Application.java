@@ -117,6 +117,24 @@ public class Application {
 //        queryManager.setArgument("100000");
 //        printList(queryManager.executeQuery());
 
+        // Test SongMinRatingSearch
+        // Add songs and rate them
+//        Song addedSong = personalLibrary.addSong(
+//                allMusic.getSongs().get("6e33056b-2a34-4ed0-b49c-f7a8ae2c5bcc")
+//        );
+//        addedSong.setRating(1);
+//
+//        Song addedSong2 = personalLibrary.addSong(
+//                allMusic.getSongs().get("dc2f8125-f42d-4498-b0f6-57dc18492caf")
+//        );
+//        addedSong2.setRating(5);
+//
+//        Searcher songMinRatingSearch = new SongMinRatingSearch();
+//        queryManager.setDatabase(personalLibrary);
+//        queryManager.setSearcher(songMinRatingSearch);
+//        queryManager.setArgument("2");
+//        printList(queryManager.executeQuery());
+
 
         // Save personalLibrary
         //personalLibrary.save();
