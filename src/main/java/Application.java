@@ -82,7 +82,7 @@ public class Application {
 //        queryManager.setArgument("86e736b4-93e2-40ff-9e1c-fb7c63fef5f6");
 //        printList(queryManager.executeQuery());
 
-        // Test SongArtistNameSearch
+        // Test SongArtistGuidSearch
 //        Searcher songArtistGuidSearch = new SongArtistGuidSearch();
 //        queryManager.setDatabase(allMusic);
 //        queryManager.setSearcher(songArtistGuidSearch);
@@ -140,6 +140,34 @@ public class Application {
 //        queryManager.setDatabase(allMusic);
 //        queryManager.setSearcher(releaseTitleSearch);
 //        queryManager.setArgument("F");
+//        printList(queryManager.executeQuery());
+
+        // Test ReleaseArtistNameSearch
+//        Searcher releaseArtistNameSearch = new ReleaseArtistNameSearch();
+//        queryManager.setDatabase(allMusic);
+//        queryManager.setSearcher(releaseArtistNameSearch);
+//        queryManager.setArgument("Weezer");
+//        printList(queryManager.executeQuery());
+
+        // Test ReleaseArtistGUIDSearch
+//        Searcher releaseArtistGuidSearch = new ReleaseArtistGuidSearch();
+//        queryManager.setDatabase(allMusic);
+//        queryManager.setSearcher(releaseArtistGuidSearch);
+//        queryManager.setArgument("6fe07aa5-fec0-4eca-a456-f29bff451b04");
+//        printList(queryManager.executeQuery());
+
+        // Test ReleaseSongNameSearch
+//        Searcher releaseSongNameSearch = new ReleaseSongNameSearch();
+//        queryManager.setDatabase(allMusic);
+//        queryManager.setSearcher(releaseSongNameSearch);
+//        queryManager.setArgument("Particle");
+//        printList(queryManager.executeQuery());
+
+        // Test ReleaseSongGuidSearch
+//        Searcher releaseSongGuidSearch = new ReleaseSongGuidSearch();
+//        queryManager.setDatabase(allMusic);
+//        queryManager.setSearcher(releaseSongGuidSearch);
+//        queryManager.setArgument("3f6a83bf-64c6-481f-9438-783e3d2bc9a6");
 //        printList(queryManager.executeQuery());
 
 
