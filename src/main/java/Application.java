@@ -61,19 +61,27 @@ public class Application {
 //        queryManager.setArgument("2");
 //        printList(queryManager.executeQuery());
 
-        // Test ArtistNameSearch
+        // Test SongTitleSearch
 //        Searcher songTitleSearch = new SongTitleSearch();
 //        queryManager.setDatabase(allMusic);
 //        queryManager.setSearcher(songTitleSearch);
 //        queryManager.setArgument("The");
 //        printList(queryManager.executeQuery());
 
-        // Test ArtistNameSearch
-        Searcher songArtistNameSearch = new SongArtistNameSearch();
-        queryManager.setDatabase(allMusic);
-        queryManager.setSearcher(songArtistNameSearch);
-        queryManager.setArgument("Weezer");
-        printList(queryManager.executeQuery());
+        // Test SongArtistNameSearch
+//        Searcher songArtistNameSearch = new SongArtistNameSearch();
+//        queryManager.setDatabase(allMusic);
+//        queryManager.setSearcher(songArtistNameSearch);
+//        queryManager.setArgument("Weezer");
+//        printList(queryManager.executeQuery());
+
+        // Test SongArtistNameSearch
+//        Searcher songArtistGuidSearch = new SongArtistGuidSearch();
+//        queryManager.setDatabase(allMusic);
+//        queryManager.setSearcher(songArtistGuidSearch);
+//        queryManager.setArgument("86e736b4-93e2-40ff-9e1c-fb7c63fef5f6");
+//        printList(queryManager.executeQuery());
+
 
 
 
