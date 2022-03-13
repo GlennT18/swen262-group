@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+// Tested by Nick
 
 public class SongMinRatingSearch implements Searcher{
     @Override
