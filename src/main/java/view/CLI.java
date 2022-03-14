@@ -1,11 +1,11 @@
 package view;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 import controller.QueryManager;
+import controller.sort.ArtistAlphaSort;
+import controller.sort.SongAlphaSort;
+import controller.sort.Sorter;
 import model.database.AllMusic;
 import model.database.Database;
 import model.database.PersonalMusicLibrary;
@@ -68,7 +68,7 @@ public class CLI {
         String keyword = "";
         for(char character : characters){   
             String temp = Character.toString(character);
-            if(!(temp.matches("^[A-Za-z0-9,/]"))){
+            if(!(temp.matches("^[A-Za-z,/]"))){
                 //checks if char is a digit or special symbol
                 System.out.println("\nDo not include symbols or digits in your command");
                 return null;
@@ -271,6 +271,11 @@ public class CLI {
         //developing the query manager
         queryManager.setSearcher(activeSearch);
         queryManager.setArgument((String) arguement);
-        //System.out.println(queryManager.executeQuery());
+        Sorter sort = new SongAlphaSort();
+        queryManager.setSorter(sort);
+        List temp = queryManager.executeQuery();
+        for(Object x : temp){
+            System.out.println(x);
+        }
     }
 }
