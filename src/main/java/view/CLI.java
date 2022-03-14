@@ -84,7 +84,7 @@ public class CLI {
                 activeSearch = artistSearches.get("type");
                 returns.add(command.get(3));
             }
-        }else if(command.get(1) == "release"){
+        }else if(command.get(1).equals("release")){
             //check which releases search to use
             if(command.get(2).equals("artistcode")){
                 activeSearch = releaseSearches.get("artistcode");
@@ -146,7 +146,7 @@ public class CLI {
     private static List findGlobalSearch(List command){
         Searcher activeSearch;
         List returns = new ArrayList<>();
-        if(command.get(1) == "artist"){
+        if(command.get(1).equals("artist")){
             //check which artist search to use
             if(command.get(2).equals("name")){
                 activeSearch = artistSearches.get("name");
@@ -155,7 +155,7 @@ public class CLI {
                 activeSearch = artistSearches.get("type");
                 returns.add(command.get(3));
             }
-        }else if(command.get(1) == "release"){
+        }else if(command.get(1).equals("release")){
             //check which releases search to use
             if(command.get(2).equals("artistcode")){
                 activeSearch = releaseSearches.get("artistcode");
@@ -287,7 +287,6 @@ public class CLI {
         queryManager.setArgument((String) arguement);
         queryManager.setSorter(sort);
         List temp = queryManager.executeQuery();
-        System.out.println(temp.size());
         for(Object x : temp){
             System.out.println(x);
         }
