@@ -53,13 +53,6 @@ public class Song implements Serializable {
 
     @Override
     public String toString() {
-        return "Song{" +
-                "guid='" + guid + '\'' +
-                ", artist=" + artist +
-                ", duration=" + duration +
-                ", title='" + title + '\'' +
-                ", rating=" + rating +
-                ", acquiredDate=" + acquiredDate +
-                '}';
+        return title + " (" + duration + "ms) by: " + artist;
     }
 }
