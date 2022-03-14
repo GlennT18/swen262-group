@@ -1,13 +1,13 @@
 import controller.QueryManager;
 import controller.search.*;
-import controller.sort.ArtistAlphaSort;
-import controller.sort.Sorter;
+import controller.sort.*;
 import model.Release;
 import model.Song;
 import model.database.AllMusic;
 import model.database.Database;
 import model.database.PersonalMusicLibrary;
 
+import java.time.LocalDate;
 import java.util.List;
 
 public class Application {
@@ -21,6 +21,10 @@ public class Application {
         } else {
             System.out.println("List is null.");
         }
+    }
+
+    public static int getRandomNumber(int min, int max) {
+        return (int) ((Math.random() * (max - min)) + min);
     }
 
     public static void main(String[] args) {
@@ -201,14 +205,30 @@ public class Application {
 //        queryManager.setArgument("5");
 //        printList(queryManager.executeQuery());
 
-        // Test ArtistNameSearch
-        Searcher artistNameSearch = new ArtistNameSearch();
-        Sorter artistAlphaSort = new ArtistAlphaSort();
-        queryManager.setDatabase(allMusic);
-        queryManager.setSearcher(artistNameSearch);
-        queryManager.setSorter(artistAlphaSort);
-        queryManager.setArgument("The");
-        printList(queryManager.executeQuery());
+        // Test ArtistSorting
+//        Searcher artistNameSearch = new ArtistNameSearch();
+//        Sorter artistAlphaSort = new ArtistAlphaSort();
+//        queryManager.setDatabase(allMusic);
+//        queryManager.setSearcher(artistNameSearch);
+//        queryManager.setSorter(artistAlphaSort);
+//        queryManager.setArgument("The");
+//        printList(queryManager.executeQuery());
+
+        // Test SongSorting
+        // Add release and rate each song inside
+//        Release addedRelease = personalLibrary.addRelease(
+//                allMusic.getReleases().get("c4c90ef7-da52-48b4-8c3a-b30c1367e75e")
+//        );
+//        for (Song s: addedRelease.getTrackList()) {
+//            s.setAcquiredDate(LocalDate.of(getRandomNumber(1900, 2200), 1, 1));
+//        }
+//        Searcher songTitleSearch = new SongTitleSearch();
+//        Sorter songSorter = new SongAcquisitionDateSort();
+//        queryManager.setDatabase(personalLibrary);
+//        queryManager.setSearcher(songTitleSearch);
+//        queryManager.setSorter(songSorter);
+//        queryManager.setArgument("");
+//        printList(queryManager.executeQuery());
 
 
 
