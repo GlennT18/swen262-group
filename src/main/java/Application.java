@@ -1,5 +1,7 @@
 import controller.QueryManager;
 import controller.search.*;
+import controller.sort.ArtistAlphaSort;
+import controller.sort.Sorter;
 import model.Release;
 import model.Song;
 import model.database.AllMusic;
@@ -198,6 +200,15 @@ public class Application {
 //        queryManager.setSearcher(releaseMinRatingSearch);
 //        queryManager.setArgument("5");
 //        printList(queryManager.executeQuery());
+
+        // Test ArtistNameSearch
+        Searcher artistNameSearch = new ArtistNameSearch();
+        Sorter artistAlphaSort = new ArtistAlphaSort();
+        queryManager.setDatabase(allMusic);
+        queryManager.setSearcher(artistNameSearch);
+        queryManager.setSorter(artistAlphaSort);
+        queryManager.setArgument("The");
+        printList(queryManager.executeQuery());
 
 
 

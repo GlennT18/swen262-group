@@ -34,6 +34,7 @@ public class QueryManager {
 
     public List executeQuery() {
         List results = searcher.performSearch(argument, database);
+        sorter.sortData(results);
         return results;
     }
 }
