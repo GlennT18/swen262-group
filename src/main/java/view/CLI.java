@@ -242,53 +242,60 @@ public class CLI {
         Database allMusic = new AllMusic();
         Database personalLibrary = new PersonalMusicLibrary();
         QueryManager queryManager = new QueryManager();
-
-        //introduces user
-        String request;
-        List command = new ArrayList<>();
         System.out.println("Welcome to The Muze Music Library System, enter \"help\" for controls");
+        while(true){
+            //introduces user
+            String request;
+            List command = new ArrayList<>();
 
-        request = scanner.nextLine();
-        command = parseRequest(request);
 
-        //gathers a correct command
-        while(command == null){
-            System.out.println("\n\nSorry, there was an error with you command. Please enter the data in a comma "
-                    + "seperated list. Please type \"help\" to see examples.");
-            System.out.println("Ex. \"global, artist, name, Bon Jovi\" Please re-enter now:");
             request = scanner.nextLine();
             command = parseRequest(request);
+
+            //gathers a correct command
+            while(command == null){
+                System.out.println("\n\nSorry, there was an error with you command. Please enter the data in a comma "
+                        + "seperated list. Please type \"help\" to see examples.");
+                System.out.println("Ex. \"global, artist, name, Bon Jovi\" Please re-enter now:");
+                request = scanner.nextLine();
+                command = parseRequest(request);
+            }
+
+            //bulk of cli
+
+            //gathering arguements for the query manager
+            List holder = new ArrayList<>();
+            Searcher activeSearch;
+            String type;
+            if(command.get(0).equals("end")){
+                System.out.println("Thank you for using The Muze Music Library!");
+                System.exit(0);
+            }
+            Object arguement = command.get(3);
+            if(command.get(0).equals("global")){
+                holder = findGlobalSearch(command);
+                queryManager.setDatabase(allMusic);
+            }else{
+                holder = findPersonalSearch(command);
+                queryManager.setDatabase(personalLibrary);
+            }
+            type = (String) holder.get(0);
+            activeSearch = (Searcher) holder.get(1);
+
+            //developing the query manager
+            Sorter sort = findSort(command);
+            queryManager.setSearcher(activeSearch);
+            queryManager.setArgument((String) arguement);
+            queryManager.setSorter(sort);
+            List temp = queryManager.executeQuery();
+            int counter = 0;
+            for(Object x : temp){
+                System.out.println(counter + " : " + x);
+                counter++;
+            }
+            counter = 0;
+            System.out.println("Please enter another command: ");
         }
 
-        //bulk of cli
-
-        //gathering arguements for the query manager
-        List holder = new ArrayList<>();
-        Searcher activeSearch;
-        String type;
-        if(command.get(0).equals("end")){
-            System.out.println("Thank you for using The Muze Music Library!");
-            System.exit(0);
-        }
-        Object arguement = command.get(3);
-        if(command.get(0).equals("global")){
-            holder = findGlobalSearch(command);
-            queryManager.setDatabase(allMusic);
-        }else{
-            holder = findPersonalSearch(command);
-            queryManager.setDatabase(personalLibrary);
-        }
-        type = (String) holder.get(0);
-        activeSearch = (Searcher) holder.get(1);
-
-        //developing the query manager
-        Sorter sort = findSort(command);
-        queryManager.setSearcher(activeSearch);
-        queryManager.setArgument((String) arguement);
-        queryManager.setSorter(sort);
-        List temp = queryManager.executeQuery();
-        for(Object x : temp){
-            System.out.println(x);
-        }
     }
 }
