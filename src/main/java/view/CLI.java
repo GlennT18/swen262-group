@@ -43,7 +43,7 @@ public class CLI {
         songSearches.put("title", new SongTitleSearch());
     }
     
-    private static List parseRequest(String request){
+    private static List<String> parseRequest(String request){
         if(request.equals("help")){
             System.out.println("In Muze Music Library System there are multiple ways to enter commands, but they must "
                     + "be very specific. There is room for five(5) words that need to be entered by the user. "
@@ -61,31 +61,12 @@ public class CLI {
             return null;
         }
         //parses string into char array
-        request = request.replaceAll("\\s", "");
-        request = request.toLowerCase();
-        char[] characters = request.toCharArray();
-        List parsedList = new ArrayList<>();
-        String keyword = "";
-        for(char character : characters){   
-            String temp = Character.toString(character);
-            if(!(temp.matches("^[A-Za-z,/]"))){
-                //checks if char is a digit or special symbol
-                System.out.println("\nDo not include symbols or digits in your command");
-                return null;
-            }
-            if(character == ','){
-                //if char is a comma, the word that has been compiled is put into the words list
-                //sets keyword back to blank
-                parsedList.add(keyword);
-                keyword = "";
-            }else{
-                //if the character is valid, it is appended to the keyword
-                keyword += character;
-            }
+        String[] parsedList = request.split(",");
+        for (int i=0; i < parsedList.length; i++) {
+            parsedList[i] = parsedList[i].trim().toLowerCase();
         }
-        //adds last word and returns the list of words
-        parsedList.add(keyword);
-        return parsedList;
+
+        return Arrays.asList(parsedList);
     }
 
     private static List findPersonalSearch(List command){
@@ -256,6 +237,12 @@ public class CLI {
     public static void main(String args[]){
         //instantiates CLI, fills hashmaps with data
         CLI cli = new CLI();
+
+        //creating the db for music & query manager
+        Database allMusic = new AllMusic();
+        Database personalLibrary = new PersonalMusicLibrary();
+        QueryManager queryManager = new QueryManager();
+
         //introduces user
         String request;
         List command = new ArrayList<>();
@@ -274,10 +261,6 @@ public class CLI {
         }
 
         //bulk of cli
-        //creating the db for music & query manager
-        Database allMusic = new AllMusic();
-        Database personalLibrary = new PersonalMusicLibrary();
-        QueryManager queryManager = new QueryManager();
 
         //gathering arguements for the query manager
         List holder = new ArrayList<>();
