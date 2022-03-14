@@ -3,9 +3,7 @@ package view;
 import java.util.*;
 
 import controller.QueryManager;
-import controller.sort.ArtistAlphaSort;
-import controller.sort.SongAlphaSort;
-import controller.sort.Sorter;
+import controller.sort.*;
 import model.database.AllMusic;
 import model.database.Database;
 import model.database.PersonalMusicLibrary;
@@ -48,7 +46,7 @@ public class CLI {
     private static List parseRequest(String request){
         if(request.equals("help")){
             System.out.println("In Muze Music Library System there are multiple ways to enter commands, but they must "
-                    + "be very specific. There is room for four(4) words that need to be entered by the user. "
+                    + "be very specific. There is room for five(5) words that need to be entered by the user. "
                     + "First, \nthe user will specify if they would like to search their personal music library or "
                     + "the total collection. This command will be \"personal\" or \"global\" respectively. "
                     + "The second command \nthe user will enter, decides what the user will be searching for. There are "
@@ -57,7 +55,9 @@ public class CLI {
                     + "\nartistcode\tartistcode\tname\nartistname\tartistname\trating\nmaxduration\tmaxduration\ttype\n"
                     + "minduration\tminduration\nminrating\tminrating\nsongcode\treleasecode\nsongname\treleasetitle\n"
                     + "title\t\ttitle\nThe fourth(4th) word is only applicable if you are searching by the name/code/date "
-                    + "of an artist or song. If thats the case, please enter the name/date accordingly");
+                    + "of an artist or song. If thats the case, please enter the name/date accordingly. The fifth(5th) input "
+                    + "will decide how the results are sorted. The options are as listed:\nRelease\tSong\tArtist\nAlphabetic\t"
+                    + "Alphabetic\tAlphabetic\nRating\tRating\nAcquisition\tAcquisition\nReleaseDate");
             return null;
         }
         //parses string into char array
@@ -227,6 +227,32 @@ public class CLI {
         return returns;
     }
 
+    public static Sorter findSort(List command){
+        Sorter sort;
+        if(command.get(1).equals("artist")){
+            sort = new ArtistAlphaSort();
+        }else if(command.get(1).equals("song")){
+            if(command.get(4).equals("alphabetic")){
+                sort = new SongAlphaSort();
+            }else if(command.get(4).equals("rating")){
+                sort = new SongRatingSort();
+            }else{
+                sort = new SongAcquisitionDateSort();
+            }
+        }else{
+            if(command.get(4).equals("alphabetic")){
+                sort = new ReleaseAlphaSort();
+            }else if(command.get(4).equals("rating")){
+                sort = new ReleaseRatingSort();
+            }else if(command.get(4).equals("acquisition")){
+                sort = new ReleaseAcquisitionDateSort();
+            }else{
+                sort = new ReleaseReleaseDateSort();
+            }
+        }
+        return sort;
+    }
+
     public static void main(String args[]){
         //instantiates CLI, fills hashmaps with data
         CLI cli = new CLI();
@@ -257,6 +283,10 @@ public class CLI {
         List holder = new ArrayList<>();
         Searcher activeSearch;
         String type;
+        if(command.get(0).equals("end")){
+            System.out.println("Thank you for using The Muze Music Library!");
+            System.exit(0);
+        }
         Object arguement = command.get(3);
         if(command.get(0).equals("global")){
             holder = findGlobalSearch(command);
@@ -269,11 +299,12 @@ public class CLI {
         activeSearch = (Searcher) holder.get(1);
 
         //developing the query manager
+        Sorter sort = findSort(command);
         queryManager.setSearcher(activeSearch);
         queryManager.setArgument((String) arguement);
-        Sorter sort = new SongAlphaSort();
         queryManager.setSorter(sort);
         List temp = queryManager.executeQuery();
+        System.out.println(temp.size());
         for(Object x : temp){
             System.out.println(x);
         }
