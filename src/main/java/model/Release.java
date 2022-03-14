@@ -73,14 +73,6 @@ public class Release implements Serializable {
 
     @Override
     public String toString() {
-        return "Release{" +
-                "guid='" + guid + '\'' +
-                ", title='" + title + '\'' +
-                ", artist=" + artist +
-                ", issueDate=" + issueDate +
-                ", medium='" + medium + '\'' +
-                ", trackList=" + Arrays.toString(trackList) +
-                ", acquiredDate=" + acquiredDate +
-                '}';
+        return title + " (" + issueDate + ") by: " + artist;
     }
 }

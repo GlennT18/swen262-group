@@ -43,10 +43,10 @@ public class Artist implements Serializable {
 
     @Override
     public String toString() {
-        return "Artist{" +
-                "guid='" + guid + '\'' +
-                ", name='" + name + '\'' +
-                ", type='" + type + '\'' +
-                '}';
+        if (type == null) {
+            return name;
+        } else {
+            return name + " - " + type;
+        }
     }
 }
