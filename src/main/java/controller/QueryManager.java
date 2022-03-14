@@ -1,6 +1,7 @@
 package controller;
 
 import controller.search.Searcher;
+import controller.sort.Sorter;
 import model.database.Database;
 
 import java.util.List;
