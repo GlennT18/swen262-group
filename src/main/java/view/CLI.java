@@ -46,6 +46,19 @@ public class CLI {
     }
     
     private static List parseRequest(String request){
+        if(request.equals("help")){
+            System.out.println("In Muze Music Library System there are multiple ways to enter commands, but they must "
+                    + "be very specific. There is room for three(3) words that need to be entered by the user. "
+                    + "First, \nthe user will specify if they would like to search their personal music library or "
+                    + "the total collection. This command will be \"personal\" or \"global\" respectively. "
+                    + "The second command \nthe user will enter, decides what the user will be searching for. There are "
+                    + "three options for this entry, \"artist\", \"release\", or \"song\". Finally, the user will enter "
+                    + "a \nsearching arguement, these can be used by entering the following options:\nReleases\tArtist\t\tSong "
+                    + "\nartistcode\tartistcode\tname\nartistname\tartistname\trating\nmaxduration\tmaxduration\ttype\n"
+                    + "minduration\tminduration\nminrating\tminrating\nsongcode\treleasecode\nsongname\treleasetitle\n"
+                    + "title\t\ttitle");
+            return null;
+        }
         //parses string into char array
         request = request.replaceAll("\\s", "");
         request = request.toLowerCase();
@@ -219,14 +232,16 @@ public class CLI {
         //introduces user
         String request;
         List command = new ArrayList<>();
-        System.out.println("Welcome to The Muze Music Library System\nPlease enter your command(s) here as a comma seperated list: ");
+        System.out.println("Welcome to The Muze Music Library System, enter \"help\" for controls");
+
         request = scanner.nextLine();
         command = parseRequest(request);
 
         //gathers a correct command
         while(command == null){
-            System.out.println("\n\nSorry, there was an error with you command. Please enter the data in a comma seperated list");
-            System.out.println("Ex. \"song, artist, release\" Please re-enter now:");
+            System.out.println("\n\nSorry, there was an error with you command. Please enter the data in a comma "
+                    + "seperated list. Please type \"help\" to see examples.");
+            System.out.println("Ex. \"global, artist, Bon Jovi\" Please re-enter now:");
             request = scanner.nextLine();
             command = parseRequest(request);
         }
@@ -254,5 +269,6 @@ public class CLI {
         //developing the query manager
         queryManager.setSearcher(activeSearch);
         queryManager.setArgument(arguement);
+        System.out.println(queryManager.executeQuery());
     }
 }
