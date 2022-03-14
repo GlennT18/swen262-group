@@ -16,7 +16,7 @@ public class ReleaseTitleSearch implements Searcher{
 
         HashMap<String, Release> releases = db.getReleases();
         for (Release release: releases.values()) {
-            if (release.getTitle().contains(query)) {
+            if (release.getTitle().toLowerCase().contains(query)) {
                 results.add(release);
             }
         }

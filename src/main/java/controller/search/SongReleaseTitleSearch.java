@@ -18,7 +18,7 @@ public class SongReleaseTitleSearch implements Searcher{
 
         HashMap<String, Release> releases = db.getReleases();
         for (Release release: releases.values()) {
-            if (release.getTitle().contains(query))
+            if (release.getTitle().toLowerCase().contains(query))
                 results.addAll(Arrays.asList(release.getTrackList()));
         }
         return results;

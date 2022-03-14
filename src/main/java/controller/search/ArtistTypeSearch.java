@@ -17,7 +17,7 @@ public class ArtistTypeSearch implements Searcher{
         HashMap<String, Artist> artists = db.getArtists();
         for (Artist artist: artists.values()) {
             String type = artist.getType();
-            if (type != null && type.contains(query)) {
+            if (type != null && type.toLowerCase().contains(query)) {
                 results.add(artist);
             }
         }

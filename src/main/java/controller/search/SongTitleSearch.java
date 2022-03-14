@@ -16,7 +16,7 @@ public class SongTitleSearch implements Searcher{
 
         HashMap<String, Song> songs = db.getSongs();
         for (Song song: songs.values()) {
-            if (song.getTitle().contains(query)) {
+            if (song.getTitle().toLowerCase().contains(query)) {
                 results.add(song);
             }
         }

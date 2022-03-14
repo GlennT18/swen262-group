@@ -16,7 +16,7 @@ public class ReleaseArtistNameSearch implements Searcher{
 
         HashMap<String, Release> releases = db.getReleases();
         for (Release release: releases.values()) {
-            if (release.getArtist().getName().contains(query)) {
+            if (release.getArtist().getName().toLowerCase().contains(query)) {
                 results.add(release);
             }
         }

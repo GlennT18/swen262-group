@@ -6,6 +6,7 @@ import model.database.Database;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
 
 // Tested by Nick
 
@@ -16,7 +17,7 @@ public class ArtistNameSearch implements Searcher{
 
         HashMap<String, Artist> artists = db.getArtists();
         for (Artist artist: artists.values()) {
-            if (artist.getName().contains(query)) {
+            if (artist.getName().toLowerCase().contains(query)) {
                 results.add(artist);
             }
         }
