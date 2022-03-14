@@ -48,7 +48,7 @@ public class CLI {
     private static List parseRequest(String request){
         if(request.equals("help")){
             System.out.println("In Muze Music Library System there are multiple ways to enter commands, but they must "
-                    + "be very specific. There is room for three(3) words that need to be entered by the user. "
+                    + "be very specific. There is room for four(4) words that need to be entered by the user. "
                     + "First, \nthe user will specify if they would like to search their personal music library or "
                     + "the total collection. This command will be \"personal\" or \"global\" respectively. "
                     + "The second command \nthe user will enter, decides what the user will be searching for. There are "
@@ -56,7 +56,8 @@ public class CLI {
                     + "a \nsearching arguement, these can be used by entering the following options:\nReleases\tArtist\t\tSong "
                     + "\nartistcode\tartistcode\tname\nartistname\tartistname\trating\nmaxduration\tmaxduration\ttype\n"
                     + "minduration\tminduration\nminrating\tminrating\nsongcode\treleasecode\nsongname\treleasetitle\n"
-                    + "title\t\ttitle");
+                    + "title\t\ttitle\nThe fourth(4th) word is only applicable if you are searching by the name/code/date "
+                    + "of an artist or song. If thats the case, please enter the name/date accordingly");
             return null;
         }
         //parses string into char array
@@ -94,22 +95,22 @@ public class CLI {
             //check which artist search to use
             if(command.get(2).equals("name")){
                 activeSearch = artistSearches.get("name");
-                returns.add("name");
+                returns.add(command.get(3));
             }else if(command.get(2).equals("rating")){
                 activeSearch = artistSearches.get("rating");
                 returns.add("rating");
             }else{
                 activeSearch = artistSearches.get("type");
-                returns.add("type");
+                returns.add(command.get(3));
             }
         }else if(command.get(1) == "release"){
             //check which releases search to use
             if(command.get(2).equals("artistcode")){
                 activeSearch = releaseSearches.get("artistcode");
-                returns.add("artistcode");
+                returns.add(command.get(3));
             }else if(command.get(2).equals("artistname")){
                 activeSearch = releaseSearches.get("artistname");
-                returns.add("artistname");
+                returns.add(command.get(3));
             }else if(command.get(2).equals("maxduration")){
                 activeSearch = releaseSearches.get("maxduration");
                 returns.add("maxduration");
@@ -118,25 +119,25 @@ public class CLI {
                 returns.add("minduration");
             }else if(command.get(2).equals("songcode")){
                 activeSearch = releaseSearches.get("songcode");
-                returns.add("songcode");
+                returns.add(command.get(3));
             }else if(command.get(2).equals("songname")){
                 activeSearch = releaseSearches.get("songname");
-                returns.add("songname");
+                returns.add(command.get(3));
             }else if(command.get(2).equals("minrating")){
                 activeSearch = releaseSearches.get("minrating");
                 returns.add("minrating");
             }else{
                 activeSearch = releaseSearches.get("title");
-                returns.add("title");
+                returns.add(command.get(3));
             }
         }else {
             //check which song search to use
             if (command.get(2).equals("artistcode")) {
                 activeSearch = songSearches.get("artistcode");
-                returns.add("artistcode");
+                returns.add(command.get(3));
             } else if (command.get(2).equals("artistname")) {
                 activeSearch = songSearches.get("artistname");
-                returns.add("artistname");
+                returns.add(command.get(3));
             } else if (command.get(2).equals("maxduration")) {
                 activeSearch = songSearches.get("maxduration");
                 returns.add("maxduration");
@@ -145,16 +146,16 @@ public class CLI {
                 returns.add("minduration");
             } else if (command.get(2).equals("releasecode")) {
                 activeSearch = songSearches.get("releasecode");
-                returns.add("releasecode");
+                returns.add(command.get(3));
             } else if (command.get(2).equals("releasetitle")) {
                 activeSearch = songSearches.get("releasetitle");
-                returns.add("releasetitle");
+                returns.add(command.get(3));
             } else if (command.get(2).equals("minrating")) {
                 activeSearch = songSearches.get("minrating");
                 returns.add("minrating");
             } else {
                 activeSearch = songSearches.get("title");
-                returns.add("title");
+                returns.add(command.get(3));
             }
         }
         returns.add(activeSearch);
@@ -168,19 +169,19 @@ public class CLI {
             //check which artist search to use
             if(command.get(2).equals("name")){
                 activeSearch = artistSearches.get("name");
-                returns.add("name");
+                returns.add(command.get(3));
             }else{
                 activeSearch = artistSearches.get("type");
-                returns.add("type");
+                returns.add(command.get(3));
             }
         }else if(command.get(1) == "release"){
             //check which releases search to use
             if(command.get(2).equals("artistcode")){
                 activeSearch = releaseSearches.get("artistcode");
-                returns.add("artistcode");
+                returns.add(command.get(3));
             }else if(command.get(2).equals("artistname")){
                 activeSearch = releaseSearches.get("artistname");
-                returns.add("artistname");
+                returns.add(command.get(3));
             }else if(command.get(2).equals("maxduration")){
                 activeSearch = releaseSearches.get("maxduration");
                 returns.add("maxduration");
@@ -189,22 +190,22 @@ public class CLI {
                 returns.add("minduration");
             }else if(command.get(2).equals("songcode")){
                 activeSearch = releaseSearches.get("songcode");
-                returns.add("songcode");
+                returns.add(command.get(3));
             }else if(command.get(2).equals("songname")){
                 activeSearch = releaseSearches.get("songname");
-                returns.add("songname");
+                returns.add(command.get(3));
             }else{
                 activeSearch = releaseSearches.get("title");
-                returns.add("title");
+                returns.add(command.get(3));
             }
         }else{
             //check which song search to use
             if(command.get(2).equals("artistcode")){
                 activeSearch = songSearches.get("artistcode");
-                returns.add("artistcode");
+                returns.add(command.get(3));
             }else if(command.get(2).equals("artistname")){
                 activeSearch = songSearches.get("artistname");
-                returns.add("artistname");
+                returns.add(command.get(3));
             }else if(command.get(2).equals("maxduration")){
                 activeSearch = songSearches.get("maxduration");
                 returns.add("maxduration");
@@ -213,13 +214,13 @@ public class CLI {
                 returns.add("minduration");
             }else if(command.get(2).equals("releasecode")){
                 activeSearch = songSearches.get("releasecode");
-                returns.add("releasecode");
+                returns.add(command.get(3));
             }else if(command.get(2).equals("releasetitle")){
                 activeSearch = songSearches.get("releasetitle");
-                returns.add("releasetitle");
+                returns.add(command.get(3));
             }else{
                 activeSearch = songSearches.get("title");
-                returns.add("title");
+                returns.add(command.get(3));
             }
         }
         returns.add(activeSearch);
@@ -241,7 +242,7 @@ public class CLI {
         while(command == null){
             System.out.println("\n\nSorry, there was an error with you command. Please enter the data in a comma "
                     + "seperated list. Please type \"help\" to see examples.");
-            System.out.println("Ex. \"global, artist, Bon Jovi\" Please re-enter now:");
+            System.out.println("Ex. \"global, artist, name, Bon Jovi\" Please re-enter now:");
             request = scanner.nextLine();
             command = parseRequest(request);
         }
@@ -255,7 +256,8 @@ public class CLI {
         //gathering arguements for the query manager
         List holder = new ArrayList<>();
         Searcher activeSearch;
-        String arguement;
+        String type;
+        String arguement = "";
         if(command.get(0).equals("global")){
             holder = findGlobalSearch(command);
             queryManager.setDatabase(allMusic);
@@ -263,12 +265,12 @@ public class CLI {
             holder = findPersonalSearch(command);
             queryManager.setDatabase(personalLibrary);
         }
-        arguement = (String) holder.get(0);
+        type = (String) holder.get(0);
         activeSearch = (Searcher) holder.get(1);
 
         //developing the query manager
         queryManager.setSearcher(activeSearch);
         queryManager.setArgument(arguement);
-        System.out.println(queryManager.executeQuery());
+        //System.out.println(queryManager.executeQuery());
     }
 }
