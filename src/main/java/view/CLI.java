@@ -54,11 +54,11 @@ public class CLI {
                     + "a \nsearching arguement, these can be used by entering the following options:\nReleases\tArtist\t\tSong "
                     + "\nartistcode\tartistcode\tname\nartistname\tartistname\trating\nmaxduration\tmaxduration\ttype\n"
                     + "minduration\tminduration\nminrating\tminrating\nsongcode\treleasecode\nsongname\treleasetitle\n"
-                    + "title\t\ttitle\nThe fourth(4th) word is only applicable if you are searching by the name/code/date "
+                    + "title\t\ttitle\n\nThe fourth(4th) word is only applicable if you are searching by the name/code/date "
                     + "of an artist or song. If thats the case, please enter the name/date accordingly. The fifth(5th) input "
-                    + "will decide how the results are sorted. The options are as listed:\nRelease\tSong\tArtist\nAlphabetic\t"
-                    + "Alphabetic\tAlphabetic\nRating\tRating\nAcquisition\tAcquisition\nReleaseDate");
-            return null;
+                    + "will decide how the results are sorted. The options are as listed:\nRelease\t\tSong\tArtist\nAlphabetic\t"
+                    + "Alphabetic\tAlphabetic\nRating\t\tRating\nAcquisition\tAcquisition\nReleaseDate\n\nPlease enter your command now: ");
+            request = scanner.nextLine();
         }
         //parses string into char array
         String[] parsedList = request.split(",");
