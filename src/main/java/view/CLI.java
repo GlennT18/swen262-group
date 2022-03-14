@@ -257,7 +257,7 @@ public class CLI {
         List holder = new ArrayList<>();
         Searcher activeSearch;
         String type;
-        String arguement = "";
+        Object arguement = command.get(3);
         if(command.get(0).equals("global")){
             holder = findGlobalSearch(command);
             queryManager.setDatabase(allMusic);
@@ -270,7 +270,7 @@ public class CLI {
 
         //developing the query manager
         queryManager.setSearcher(activeSearch);
-        queryManager.setArgument(arguement);
+        queryManager.setArgument((String) arguement);
         //System.out.println(queryManager.executeQuery());
     }
 }
