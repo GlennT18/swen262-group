@@ -11,6 +11,8 @@ import model.database.Database;
 import model.database.PersonalMusicLibrary;
 import controller.search.*;
 
+import javax.management.Query;
+
 public class CLI {
     static Scanner scanner = new Scanner(System.in);
     //creating the hashmap for each search
@@ -274,7 +276,7 @@ public class CLI {
         //creating the db for music & query manager
         Database allMusic = new AllMusic();
         Database personalLibrary = new PersonalMusicLibrary();
-        QueryManager queryManager = new QueryManager();
+        QueryManager queryManager = QueryManager.getInstance();
         System.out.println("Welcome to The Muze Music Library System, enter \"help\" for controls");
         while(true){
             //introduces user

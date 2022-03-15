@@ -12,8 +12,13 @@ public class QueryManager {
     private String argument;
     private Database database;
 
-    public QueryManager() {
+    private static QueryManager instance = new QueryManager();
 
+    private QueryManager(){}
+
+    //Get the only object available
+    public static QueryManager getInstance(){
+        return instance;
     }
 
     public void setSearcher(Searcher searcher) {
