@@ -4,6 +4,8 @@ import java.util.*;
 
 import controller.QueryManager;
 import controller.sort.*;
+import model.Release;
+import model.Song;
 import model.database.AllMusic;
 import model.database.Database;
 import model.database.PersonalMusicLibrary;
@@ -234,6 +236,37 @@ public class CLI {
         return sort;
     }
 
+    public static void addSong(List results, Database library){
+        while(true){
+            Song song;
+            System.out.println("\nIf you would like to add a song to your playlist, please enter its numeric id here, if not, please enter \"end\": ");
+            String stringID = scanner.nextLine();
+            if(stringID.equals("end")){
+                break;
+            }else{
+                int id = Integer.parseInt(stringID);
+                song = (Song) results.get(id - 1);
+                library.addSong(song);
+            }
+        }
+
+    }
+
+    public static void addRelease(List results, Database library){
+        while(true) {
+            Release release;
+            System.out.println("\nIf you would like to add a release to your playlist, please enter its numeric id here, if not, please enter \"end\": ");
+            String stringID = scanner.nextLine();
+            if(stringID.equals("end")){
+                break;
+            }else{
+                int id = Integer.parseInt(stringID);
+                release = (Release) results.get(id - 1);
+                library.addRelease(release);
+            }
+        }
+    }
+
     public static void main(String args[]){
         //instantiates CLI, fills hashmaps with data
         CLI cli = new CLI();
@@ -245,6 +278,7 @@ public class CLI {
         System.out.println("Welcome to The Muze Music Library System, enter \"help\" for controls");
         while(true){
             //introduces user
+            System.out.print("Please enter command here: ");
             String request;
             List command = new ArrayList<>();
 
@@ -288,11 +322,20 @@ public class CLI {
             queryManager.setArgument((String) arguement);
             queryManager.setSorter(sort);
             List temp = queryManager.executeQuery();
-            int counter = 0;
+            int counter = 1;
             for(Object x : temp){
                 System.out.println(counter + " : " + x);
                 counter++;
             }
+
+            if((command.get(1).equals("song")) && command.get(0).equals("global")){
+                addSong(temp, personalLibrary);
+            }else if((command.get(1).equals("release")) && command.get(0).equals("global")){
+                addRelease(temp, personalLibrary);
+            }else{
+                continue;
+            }
+
             counter = 0;
             System.out.println("Please enter another command: ");
         }
