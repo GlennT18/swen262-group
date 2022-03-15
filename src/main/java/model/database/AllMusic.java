@@ -130,11 +130,18 @@ public class AllMusic implements Database {
             String rawIssueDate = nextLine[4];
 
             // Parse date (either YYYY or YYYY-MM-DD)
-            LocalDate issueDate = switch (rawIssueDate.length()) {
-                case 4 -> LocalDate.parse(rawIssueDate + "-01-01", formatter);
-                case 7 -> LocalDate.parse(rawIssueDate + "-01", formatter);
-                default -> LocalDate.parse(rawIssueDate, formatter);
-            };
+            LocalDate issueDate;
+            switch (rawIssueDate.length()) {
+                case 4:
+                    issueDate = LocalDate.parse(rawIssueDate + "-01-01", formatter);
+                    break;
+                case 7:
+                    issueDate = LocalDate.parse(rawIssueDate + "-01", formatter);
+                    break;
+                default:
+                    issueDate = LocalDate.parse(rawIssueDate, formatter);
+                    break;
+            }
 
             // Find Artist Object by guid
             Artist releaseArtist = artists.get(artistGUID);
